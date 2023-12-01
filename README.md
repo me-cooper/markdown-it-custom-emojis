@@ -7,31 +7,39 @@ Default emojis eg are handled by
 
 ```javascript
 const MarkdownIt  	= require('markdown-it');
+
 const emoji       	= require('markdown-it-emoji');
 
 const 	md   		= new MarkdownIt();
-		md.use(emoji);
+md.use(emoji);
 ```
 
-`:heart:` :heart:
+`:heart:` -> :heart:
 
-`:kiss:` :kiss:
+`:kiss:` -> :kiss:
 
-`:D` :smile:
+`:D` ​ ​-​>​ :smile:
 
 
 
 Custom emojis are handled by plugin function:
-`win`
-`<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/win.gif" alt="emoji_win"></span>`
+`:win:``
 
-`heh`
+``<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/win.gif" alt="emoji_win"></span>`
 
-`<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/heh.png" alt="emoji_heh"></span>`
+`:heh:``
+
+``<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/heh.png" alt="emoji_heh"></span>`
 
 
 
 ```javascript
+const MarkdownIt  	= require('markdown-it');
+
+const emoji       	= require('markdown-it-emoji');
+
+const 	md   		= new MarkdownIt();
+md.use(emoji);
 md.use(customEmojiPlugin);
 ```
 
