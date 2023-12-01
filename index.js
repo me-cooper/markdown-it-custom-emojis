@@ -1,43 +1,10 @@
-# markdown-it-custom-emojis
-Plugin function for custom emojis markdown-it.
+const express = require('express');
+const fs = require('fs');
+const app = express();
+const port = 3000;
 
 
 
-Default emojis eg are handled by 
-
-```javascript
-const MarkdownIt  	= require('markdown-it');
-const emoji       	= require('markdown-it-emoji');
-
-const 	md   		= new MarkdownIt();
-		md.use(emoji);
-```
-
-`:heart:` :heart:
-
-`:kiss:` :kiss:
-
-`:D` :smile:
-
-
-
-Custom emojis are handled by plugin function:
-`win`
-`<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/win.gif" alt="emoji_win"></span>`
-
-`heh`
-
-`<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/heh.png" alt="emoji_heh"></span>`
-
-
-
-```javascript
-md.use(customEmojiPlugin);
-```
-
-
-
-```javascript
 function customEmojiPlugin(md, options) {
   const defaultOptions = {
 
@@ -79,5 +46,54 @@ function customEmojiPlugin(md, options) {
     }
   };
 }
-```
 
+
+
+
+const MarkdownIt  = require('markdown-it');
+// Standardemojis :kiss: :D :) :* :heart: .....
+const emoji       = require('markdown-it-emoji');
+
+const md          = new MarkdownIt();
+      md.use(emoji);
+      md.use(customEmojiPlugin);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.use(express.static('public'));
+
+
+app.get('/', (req, res) => {
+
+  const filePath = './file.txt';
+
+
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      res.status(500).send('Fehler beim Lesen der Datei');
+      return;
+    }
+
+    const rendered = md.render(data);
+
+    res.send(`<html><body>${rendered}</body></html>`);
+
+  });
+
+});
+
+app.listen(port, () => {
+  console.log(`Server läuft auf http://localhost:${port}`);
+});
