@@ -23,13 +23,14 @@ md.use(emoji);
 
 
 Custom emojis are handled by plugin function:
+
 `:win:`
 
-``<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/win.gif" alt="emoji_win"></span>`
+`<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/win.gif" alt="emoji_win"></span>`
 
 `:heh:`
 
-``<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/heh.png" alt="emoji_heh"></span>`
+`<span class="custom-emoji"><img style="height: 1.2em; vertical-align: text-top;" src="/images/emojis/heh.png" alt="emoji_heh"></span>`
 
 
 
